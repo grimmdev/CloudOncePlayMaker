@@ -3,21 +3,19 @@ using Trollpants.CloudOnce;
 namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("CloudOnce")]
-	[Tooltip("Unlocks Achievement")]
-	public class UnlockAchievement : FsmStateAction
+	[Tooltip("Saves your Cloud Data.")]
+	public class CloudSave : FsmStateAction
 	{
-		[Tooltip("Achievement to Unlock.")]
-		public FsmString AchievementID;
 		
 		public override void Reset()
 		{
-			AchievementID = "AchievementID";
+
 		}
 		
 		public override void OnEnter()
 		{
 			if (Cloud.Provider.IsSignedIn)
-				Cloud.Provider.Achievements.UnlockAchievement (AchievementID.Value);
+				Cloud.Provider.Storage.Save();
 			Finish();
 		}
 		

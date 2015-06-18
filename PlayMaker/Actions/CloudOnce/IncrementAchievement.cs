@@ -22,7 +22,8 @@ namespace HutongGames.PlayMaker.Actions
 		
 		public override void OnEnter()
 		{
-			Cloud.Provider.Achievements.IncrementAchievement (AchievementID.Value, CurrentScore.Value, Goal.Value);
+			if (Cloud.Provider.IsSignedIn)
+				Cloud.Provider.Achievements.IncrementAchievement (AchievementID.Value, CurrentScore.Value, Goal.Value);
 			Finish();
 		}
 		

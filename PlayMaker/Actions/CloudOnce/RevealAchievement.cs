@@ -16,7 +16,8 @@ namespace HutongGames.PlayMaker.Actions
 		
 		public override void OnEnter()
 		{
-			Cloud.Provider.Achievements.RevealAchievement (AchievementID.Value);
+			if (Cloud.Provider.IsSignedIn)
+				Cloud.Provider.Achievements.RevealAchievement (AchievementID.Value);
 			Finish();
 		}
 		
